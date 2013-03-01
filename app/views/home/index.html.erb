@@ -1,0 +1,20 @@
+
+
+<div class="row">
+    <div class="span12">
+    	<div class="row">
+		    <div class="span8">
+				<h1>Home#index</h1>
+				<% if current_user %>
+					<%= current_user.role %>
+				<% end %>
+		    </div>
+		    <div class="span4">
+				<h1>Side Span4</h1>
+				<% if current_user %>
+					<%= current_user.role %>
+				<% end %>
+		    </div>
+	    </div>
+    </div>
+</div>

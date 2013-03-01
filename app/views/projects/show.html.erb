@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="span12">
+		<div class="grey-box">
+			<p>
+			  <b>Name:</b>
+			  <%= @project.name %>
+			</p>
+
+			<p>Users: </p>
+			<% @project.users.each do |user| %>
+				<%= user.display_name %>
+			<% end %>
+			<br/>
+			<%= link_to 'Edit', edit_project_path(@project) %> |
+			<%= link_to 'Back', projects_path %>
+		</div>
+    </div>
+</div>
+
+	
+
