@@ -145,15 +145,35 @@ end
 
 helper_method :admin?
 
-protected
+  protected
 
-def admin?
-  unless (current_user && current_user.admin?)
-    flash[:error]= "Unauthorized access"
-    redirect_to projects_path
-    false
+  def admin?
+    unless current_user && current_user.admin?
+      false
+    else
+      true
+    end
   end
-end
+
+  def authorize
+    unless admin?
+      flash[:error] = "Unauthorized access"
+        redirect_to projects_path
+        false
+    end
+  end
+
+
+== Generate random 3 number from an array
+
+$ n = (0..10).ta_a
+
+$ n.shuffle[0..2] ==> [1,4,6] 
+
+$ n.sample 3 ==> [4,2,8]
+
+$ 3.times.map{rand(1..9)}
+
 
 
 

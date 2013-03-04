@@ -28,7 +28,6 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="posts_tab">
-                            
 
                         </div>
                         <div class="tab-pane" id="refeeds_tab">
@@ -42,7 +41,7 @@
                                 <h3>Edit Your Account</h3>
                                 <p>Enter your password to make changes</p>
                                 <hr />
-
+                                <%= render 'devise/registrations/form', :resource => current_user %>
                                
                             </div>
                         </div>

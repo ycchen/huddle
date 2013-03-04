@@ -9,7 +9,7 @@ gem 'devise'
 gem 'bootstrap-sass-rails'
 gem 'gravatar-ultimate'
 gem 'cancan' #simple authorization solution for Rails which is decoupled from user roles. All permissions are stored in a single location
-
+gem 'simple_form'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
