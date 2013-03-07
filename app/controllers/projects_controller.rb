@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
-  before_filter :authorize, :only => [:new, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy, :show]
+  before_filter :authorize, :only => [:new, :edit, :update, :destroy, :show]
 
   # GET /projects
   # GET /projects.json

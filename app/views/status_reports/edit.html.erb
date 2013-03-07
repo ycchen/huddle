@@ -1,6 +1,17 @@
-<h1>Editing status_report</h1>
 
-<%= render 'form' %>
+<div class="root">
+	<div class="row">
+	  <div class="span12">
+	    <div class="well black-transparent-box">
+	        <div class="grey-box">
+		        <h1>Editing status_report</h1>
 
-<%= link_to 'Show', @status_report %> |
-<%= link_to 'Back', status_reports_path %>
+				<%= render 'status_form' %>
+
+				<%= link_to 'Show', @status_report %> |
+				<%= link_to 'Back', status_reports_path %>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>

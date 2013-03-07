@@ -49,6 +49,17 @@ $ rails g scaffold status_report project:references user:references yesterday:te
 
 $ rake db:migrate
 
+* added relationship between user and status_report models
+
+/* user model */
+
+has_many :status_reports
+
+/* status_report model */
+
+belongs_to :user
+
+
 == Add authentication to Project and Report
 
 == Generate User view template from devise gem
@@ -174,6 +185,58 @@ $ n.sample 3 ==> [4,2,8]
 
 $ 3.times.map{rand(1..9)}
 
+
+== Generate dashboard model
+
+$ rails g controller dashboard index
+
+== Added dashboard to routes.rb
+
+== Added relationship between user, project, and projects_users models
+
+/* user model */
+has_many :projects_users
+has_many :projects, :through => :projects_users
+
+/* project model */
+
+has_many :projects_users
+
+/* using :delete_all if you don't need a callback, otherwise use :destroy */
+
+has_many :users, :through => :proejcts_users, :dependent => :delete_all
+
+
+== Added RoutingError handler at the end of routes.rb
+
+match '*path(.:format)', :to => 'application#routing_error'
+
+/* controller/application_controller.rb */
+
+def routing_error
+  render_not_found
+end
+
+def render_not_found
+  flash[:notice] = 'The object you tried to access does not exist!'
+  redirect_to root_path
+end
+
+== Added ActiveRecord::RecordNotFound handler
+
+/* add following code at the top of controlers/application_controller.rb */
+
+rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+
+== Added api controller, routes, and assoicated api controllers
+
+1. create app\controllers\api folder
+
+2. create app\controllers\api\api_controller.rb
+
+3. create app\controllers\api\posts_controller.rb
+
+4. modified config\routes.rb to add api routes
 
 
 

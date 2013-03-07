@@ -1,20 +1,44 @@
 
+<div class="root">
+	<div class="row">
+	    <div class="span12">
+	    	<div class="row">
+			    <div class="span8">
+			    	<div class="grey-box">
+						<h3>What's being posted right now!</h3>
+						<hr />
+						<div id="recent_posts"></div>
+						<div id="recent-loading_posts" class="hide"></div>
+	            		<%= link_to "Load More", root_path, :remote => true, :class=> "btn offset1 span5", :id => "recent_load_more" %>
+	            			<br/>
+					</div>
+			    </div>
+			    <div class="span4">
+					<div class="black-transparent-box">
+						<h3>Side Span4 - 1</h3>
+						<% if current_user %>
+							<%= current_user.role %>
+						<% end %>
 
-<div class="row">
-    <div class="span12">
-    	<div class="row">
-		    <div class="span8">
-				<h1>Home#index</h1>
-				<% if current_user %>
-					<%= current_user.role %>
-				<% end %>
-		    </div>
-		    <div class="span4">
-				<h1>Side Span4</h1>
-				<% if current_user %>
-					<%= current_user.role %>
-				<% end %>
+					</div>
+					<br/>
+					<div class="black-transparent-box">
+						<h3>Side Span4 - 2</h3>
+						<% if current_user %>
+							<%= current_user.role %>
+						<% end %>
+						
+					</div>
+					<br/>
+					<div class="black-transparent-box">
+						<h3>Side Span4 - 3</h3>
+						<% if current_user %>
+							<%= current_user.role %>
+						<% end %>
+						
+					</div>
+			    </div>
 		    </div>
 	    </div>
-    </div>
+	</div>
 </div>

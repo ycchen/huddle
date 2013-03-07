@@ -1,0 +1,53 @@
+
+<div class="root">
+    <div class="row">
+        <div class="header span12">
+            <h1>Post Status</h1>
+            <br>
+        </div>
+        <div class="span12">
+            <div class="row">
+                <div class="span4">
+                    <ul id="nav_tabs" class="nav nav-pills nav-stacked well">
+                        <li><a href="#posts_tab" data-toggle="tab">Post Status</a></li>
+                        <!-- 
+                        <li><a href="#refeeds_tab" data-toggle="tab">Refeeds</a></li>
+                        <li><a href="#edit_account_tab" data-toggle="tab">Edit Account</a></li>
+                        <li><a href="#authentications_tab" data-toggle="tab">Services</a></li>
+                         -->
+                    </ul>
+                </div>
+
+                <div class="span8">
+                    <div class="well black-transparent-box">
+                        <div>
+                            <img src="<%= current_user.avatar %>" style="float:left"></img>
+                            <div style="float:left; margin-left:15px; color: white">
+                                <h3><%= link_to current_user.display_name, "" %></h3>
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <br />
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="posts_tab">
+                                <%= render :partial => 'status_reports/status_form' %>
+                            </div>
+                            <div class="tab-pane" id="edit_account_tab">
+                                <div class="grey-box">
+                                    <h3>Edit Your Account</h3>
+                                    <p>Enter your password to make changes</p>
+                                    <hr />
+                                    <%= render 'devise/registrations/form', :resource => current_user %>
+                                   
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

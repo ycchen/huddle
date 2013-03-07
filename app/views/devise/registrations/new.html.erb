@@ -1,22 +1,30 @@
-<h2>Sign up</h2>
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="span6 offset3 grey-box well">
+        <h3>Sign up</h3>
+        <hr/>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+          <div>
+          <%= f.email_field :email, :autofocus => true, :placeholder => "Email Address" %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+          <div>
+          <%= f.password_field :password, :placeholder => "Password" %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+          <div>
+          <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %></div>
+        <!-- 
+          <div><%= f.label :roles %><br/>
+          	<%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+          </div>
+         -->
+          <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
+        <% end %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :roles %><br/>
-  	<%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

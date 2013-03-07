@@ -1,0 +1,35 @@
+<%= form_for(@status_report, :url => api_posts_path, method: :post, :remote => true) do |f| %>
+<!-- 
+  <div class="field">
+    <%= f.label :project, :style =>"color:white" %>
+    <%= f.collection_select(:project_id, Project.all, :id, :name)%>
+  </div>
+   -->
+  <div class="field">
+    <%= f.label :project, :style =>"color:white" %>
+    <%= f.collection_select(:project_id, @projects, :id, :name)%>
+  </div>
+
+  <div class="field">
+    <%= f.label :yesterday , :style =>"color:white" %>
+    <%= f.text_area(:yesterday, :cols => 20, :rows => 5) %>
+  </div>
+  <div class="field">
+    <%= f.label :today , :style =>"color:white" %>
+    <%= f.text_area :today, :clos => 20, :rows => 5 %>
+  </div>
+  <!-- 
+  <%= f.hidden_field(:user_id,:value => current_user.id) %>
+  <%= f.hidden_field(:status_date,:value => "#{Time.zone.now.to_datetime}") %> 
+  -->
+  <!-- <div class="field">
+    
+    <%= f.label :status_date %><br />
+    <%= f.date_select :status_date %>
+  </div>
+  -->
+  <input type='hidden' id='success_function' value='post_added' />
+  <div class="actions">
+    <%= f.submit "Post", :class => "btn btn-primary" %>
+  </div>
+<% end %>

@@ -15,15 +15,25 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+function success_notify(msg) {
+	$('.alert-success').html(msg).slideDown('slow').delay(2000).slideUp('slow');
+}
+
+function error_notify(msg) {
+	$('.alert-error').html(msg).slideDown('slow').delay(2000).slideUp('slow');
+}
 
 $(function(){
 	
-	// $('.nav').click(function(e){
-	// 	e.preventDefault();
-		
-	// });
-
 	$('.alert').delay(5000).slideUp('slow');
-	
+
+	// $(".nav > li").click(function(e){
+	// 	$(this).siblings().removeClass("active");   
+ //    	$(this).addClass("active");
+ //    	// e.preventDefault();
+ //    	// return false;
+	//  });
+
+
 });
 

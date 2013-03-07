@@ -1,0 +1,33 @@
+<% @status_reports.each do |post| %>
+	<div class="row">
+		<div class="span7 well">
+			<div class="span1" style="margin-left: -5px">
+				<%= image_tag("#{post.user.avatar}") %>
+			</div>
+			<div class="span4">
+				<!-- <div class="display-name">
+					<%= post.user.display_name %>
+				</div> -->
+				<div class="project-name">
+					
+				</div>
+<span class="">Yesterday:</span>
+				<div class="yesterday">
+					<%= post.yesterday %>
+				</div>
+<span class="">Today:</span>
+				<div class="today">
+					<%= post.today %>
+				</div>
+				<span class="light">
+					posted by: <%= post.user.display_name %> /
+					posted: <%= time_ago_in_words(post.created_at) %>
+				</span>
+			</div>
+			<div class="icon" style="float: right">
+				<%= post.project.name %>
+			</div>
+
+		</div>
+	</div>
+<% end %>

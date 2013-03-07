@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  	rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+  	
 	helper_method :admin?
+
+	def routing_error
+		render_not_found
+	end
+
+	
 
 	protected
 
@@ -21,6 +29,7 @@ class ApplicationController < ActionController::Base
 	  		false
 		end
 	end
+
 	# def admin?
 	# 	unless (current_user && current_user.admin?)
 	# 	  	flash[:error] = "Unauthorized access"
@@ -29,5 +38,8 @@ class ApplicationController < ActionController::Base
 	# 	end
 	# end
 	
-
+	def render_not_found
+		flash[:notice] = 'The object you tried to access does not exist!'
+		redirect_to root_path
+	end
 end

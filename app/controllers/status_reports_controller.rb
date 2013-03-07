@@ -3,7 +3,12 @@ class StatusReportsController < ApplicationController
   # GET /status_reports
   # GET /status_reports.json
   def index
-    @status_reports = StatusReport.all
+    if current_user
+      @status_reports = current_user.status_reports.order("created_at DESC")
+    else
+      @status_reports = StatusReport.all
+    end
+    
     
     respond_to do |format|
       format.html # index.html.erb
@@ -36,12 +41,16 @@ class StatusReportsController < ApplicationController
   # GET /status_reports/1/edit
   def edit
     @status_report = StatusReport.find(params[:id])
+    @projects = current_user.projects.order('name ASC')
   end
 
   # POST /status_reports
   # POST /status_reports.json
   def create
+     
     @status_report = StatusReport.new(params[:status_report])
+    @status_report.user_id = current_user.id
+    @status_report.status_date = Time.zone.now.to_datetime
 
     respond_to do |format|
       if @status_report.save
@@ -52,6 +61,7 @@ class StatusReportsController < ApplicationController
         format.json { render json: @status_report.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /status_reports/1
