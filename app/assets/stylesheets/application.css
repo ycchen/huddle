@@ -71,10 +71,11 @@ body {
 	color: #333;
 }
 
-.light {
+.light, .light-span {
 	font-size: 11px;
 	color: #AAA;
 }
+
 
 .full_width {
 	width: 95%;

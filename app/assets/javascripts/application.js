@@ -23,17 +23,29 @@ function error_notify(msg) {
 	$('.alert-error').html(msg).slideDown('slow').delay(2000).slideUp('slow');
 }
 
+function get_post() {
+	get_last_post();
+	last_record_timestamp = $('span.light-span').first().data("timestamp");
+	fetch_recent_posts($('#recent_posts'));
+
+}
+
+function get_last_post(){
+	
+	$("body").delegate('span.light-span','click',function(){
+		lastspan = $('span.light-span').first().data("id");
+	});
+}
+
 $(function(){
 	
 	$('.alert').delay(5000).slideUp('slow');
 
-	// $(".nav > li").click(function(e){
-	// 	$(this).siblings().removeClass("active");   
- //    	$(this).addClass("active");
- //    	// e.preventDefault();
- //    	// return false;
-	//  });
+	if($(location).attr('href') == rootURL){
+		get_last_post();	
+		setInterval(function(){get_post()}, 30000);
+	}
 
-
+	
 });
 

@@ -5,24 +5,22 @@
 				<%= image_tag("#{post.user.avatar}") %>
 			</div>
 			<div class="span4">
-				<!-- <div class="display-name">
-					<%= post.user.display_name %>
-				</div> -->
-				<div class="project-name">
-					
-				</div>
-<span class="">Yesterday:</span>
+				<span class="">Yesterday:</span>
 				<div class="yesterday">
 					<%= post.yesterday %>
 				</div>
-<span class="">Today:</span>
+				<span class="">Today:</span>
 				<div class="today">
 					<%= post.today %>
 				</div>
 				<span class="light">
 					posted by: <%= post.user.display_name %> /
+				</span>
+				<br/>
+				<span class="light-span" data-id="<%=post.id%>" data-timestamp="<%= post.created_at.strftime("%Y-%m-%d %H:%M:%S:%L") %>">
 					posted: <%= time_ago_in_words(post.created_at) %>
 				</span>
+				
 			</div>
 			<div class="icon" style="float: right">
 				<%= post.project.name %>

@@ -8,7 +8,11 @@ class HomeController < ApplicationController
   end
 
   def recentposts
-  	@status_reports = StatusReport.order("created_at DESC")
+    if params[:timestamp]
+      @status_reports = StatusReport.order("created_at DESC").where("created_at > ?", params[:timestamp])
+    else
+      @status_reports = StatusReport.order("created_at DESC")
+    end
   	render :layout => false
   end
 end

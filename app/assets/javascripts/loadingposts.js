@@ -1,14 +1,23 @@
 var recent_page =1;
+var last_record_timestamp='' ;
 var rootURL = location.protocol+'//'+location.host+'/';
+var homeURL = rootURL+'home';
+
 function fetch_recent_posts(div) {
+	url= "/home/recentposts";
+	if(last_record_timestamp != ''){
+		url += '?timestamp=' +last_record_timestamp
+
+	}
+
 	$.ajax({
-		url: "/home/recentposts",
+		url: url,
 		cache: false,
 		success: function(html){
 			if (recent_page ==1){
 				div.html(html);
 			}else{
-				div.append(html);
+				div.prepend(html);
 			}
 			recent_page++;
 		}
@@ -29,4 +38,5 @@ $(function(){
 	});
 
 	$("#recent_load_more").hide();
+
 });
